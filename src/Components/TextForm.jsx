@@ -9,26 +9,46 @@ export default function TextForm({ heading }) {
     setText(newText)
   }
 
+  let handleLoClick = () => {
+    let newText = text.toLowerCase()
+    setText(newText)
+  }
+
   let handleOnChange = (e) => {
     setText(e.target.value)
   }
 
   return (
-    <div>
-      <div className='mb-3'>
-        <h1>{heading}</h1>
-        <textarea
-          className='form-control'
-          value={text}
-          id='myBox'
-          rows='8'
-          onChange={handleOnChange}
-        ></textarea>
+    <>
+      <div className='container'>
+        <div className='mb-3'>
+          <h1>{heading}</h1>
+          <textarea
+            className='form-control'
+            placeholder={text}
+            id='myBox'
+            rows='8'
+            onChange={handleOnChange}
+          ></textarea>
+        </div>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>
+          Convert To Uppercase
+        </button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>
+          Convert To Lowercase
+        </button>
       </div>
-      <button className='btn btn-primary' onClick={handleUpClick}>
-        Convert To Uppercase
-      </button>
-    </div>
+
+      <div className='container my-3'>
+        <h2>Your text summary</h2>
+        <p>
+          {text.split(' ').length} Words, {text.length} Characters
+        </p>
+        <p>Average time to read is {0.008 * text.split(' ').length} minutes</p>
+        <h2>Preview</h2>
+        <p>{text}</p>
+      </div>
+    </>
   )
 }
 
