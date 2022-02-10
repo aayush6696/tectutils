@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-export default function TextForm({ heading, mode }) {
+export default function TextForm({ heading, mode, showAlert }) {
   const [text, setText] = useState('')
 
   let handleUpClick = () => {
     let newText = text.toUpperCase()
     setText(newText)
+    showAlert('converted to uppercase', 'success')
   }
 
   let handleLoClick = () => {
     let newText = text.toLowerCase()
     setText(newText)
+    showAlert('converted to lowercase', 'success')
   }
 
   let handleClear = () => {
     let newText = ''
     setText(newText)
+    showAlert('Cleared', 'success')
   }
 
   let handleOnChange = (e) => {
