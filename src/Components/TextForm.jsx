@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 export default function TextForm({ heading }) {
-  const [text, setText] = useState('Enter text here')
+  const [text, setText] = useState('')
 
   let handleUpClick = () => {
     let newText = text.toUpperCase()
@@ -11,6 +11,11 @@ export default function TextForm({ heading }) {
 
   let handleLoClick = () => {
     let newText = text.toLowerCase()
+    setText(newText)
+  }
+
+  let handleClear = () => {
+    let newText = ''
     setText(newText)
   }
 
@@ -25,9 +30,9 @@ export default function TextForm({ heading }) {
           <h1>{heading}</h1>
           <textarea
             className='form-control'
-            placeholder={text}
             id='myBox'
             rows='8'
+            value={text}
             onChange={handleOnChange}
           ></textarea>
         </div>
@@ -36,6 +41,9 @@ export default function TextForm({ heading }) {
         </button>
         <button className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>
           Convert To Lowercase
+        </button>
+        <button className='btn btn-primary mx-2 my-1' onClick={handleClear}>
+          Clear
         </button>
       </div>
 
