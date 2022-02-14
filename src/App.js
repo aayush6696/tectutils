@@ -1,9 +1,9 @@
 import './App.css'
 import Navbar from './Components/Navbar'
 import TextForm from './Components/TextForm'
-import About from './Components/About'
 import React, { useState } from 'react'
 import Alert from './Components/Alert'
+import About from './Components/About'
 
 function App() {
   const [mode, setMode] = useState('light')
@@ -50,7 +50,7 @@ function App() {
           heading='Enter text to analyze below'
         />
       </div>
-      {/* <About /> */}
+      <About mode={mode} />
     </div>
   )
 }
